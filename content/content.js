@@ -17,36 +17,11 @@
     // パネルの作成
     const panel = document.createElement('div');
     panel.id = 'meet-code-panel';
-    panel.style.width = '100%';
-    panel.style.marginTop = '10px';
-    panel.style.padding = '8px';
-    panel.style.background = '#F8F9FA';
-    panel.style.borderRadius = '8px';
-    panel.style.display = 'flex';
-    panel.style.flexWrap = 'wrap';
-    panel.style.alignItems = 'center';
-    panel.style.justifyContent = 'flex-start';
-    panel.style.gap = '8px';
 
     // コードリスト表示
     codes.forEach((code) => {
       const btn = document.createElement('button');
       btn.textContent = code;
-      btn.style.padding = '8px 12px';
-      btn.style.background = '#FFFFFF';
-      btn.style.border = '1px solid #DADCE0';
-      btn.style.borderRadius = '20px';
-      btn.style.fontSize = '14px';
-      btn.style.cursor = 'pointer';
-      btn.style.transition = 'background 0.2s ease, transform 0.1s ease';
-      btn.style.boxShadow = 'none';
-      btn.style.color = '#3C4043';
-
-      // ホバー時のエフェクト
-      btn.onmouseover = () => (btn.style.background = '#E8F0FE');
-      btn.onmouseout = () => (btn.style.background = '#FFFFFF');
-      btn.onmousedown = () => (btn.style.transform = 'scale(0.95)');
-      btn.onmouseup = () => (btn.style.transform = 'scale(1)');
 
       // クリックでコードを入力 & 参加ボタンを押す
       btn.onclick = function () {
