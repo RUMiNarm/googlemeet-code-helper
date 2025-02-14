@@ -1,0 +1,114 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  width: 250px;
+  padding: 10px;
+  font-family: 'Zen Kaku Gothic New', serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.5rem;
+}
+h3 {
+  font-weight: 1000;
+}
+.add-code-container {
+  display: flex;
+}
+input {
+  width: 70%;
+  padding: 5px;
+}
+#addCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: none;
+  border-radius: 5px;
+  background-color: #2589d0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+#addCode:hover {
+  background-color: #1579c0;
+}
+
+.auto-join-toggle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  box-sizing: content-box;
+  background-color: #ff8d8d33;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.auto-join-toggle:has(:checked) {
+  background-color: #75bbff33;
+}
+
+.auto-join-toggle::before {
+  position: absolute;
+  left: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #ff8d8d;
+  content: '';
+  transition: left 0.4s;
+}
+
+.auto-join-toggle:has(:checked)::before {
+  left: 50px;
+  background-color: #75bbff;
+}
+
+.auto-join-toggle::after {
+  position: absolute;
+  left: 26px;
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9em;
+  content: 'No';
+  transition: left 0.4s;
+}
+
+.auto-join-toggle:has(:checked)::after {
+  left: 71px;
+  content: 'Yes';
+}
+
+.auto-join-toggle input {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background: #f0f0f0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.delete-button {
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+}

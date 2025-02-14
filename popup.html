@@ -3,41 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meet Code Helper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>GoogleMeetCode Auto Input</title>
     <script src="popup.js" defer></script>
-    <style>
-      body {
-        width: 250px;
-        padding: 10px;
-        font-family: Arial, sans-serif;
-      }
-      input {
-        width: 80%;
-        padding: 5px;
-      }
-      button {
-        padding: 5px;
-        margin: 5px 0;
-        cursor: pointer;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-      li {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px;
-        background: #f0f0f0;
-        margin: 5px 0;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body>
-    <h3>Google Meet コード一覧</h3>
-    <input type="text" id="codeInput" placeholder="コードを追加" />
-    <button id="addCode">追加</button>
-    <ul id="codeList"></ul>
+    <h3>GoogleMeetCode Auto Input</h3>
+    <section>
+      <span class="add-code-container">
+        <input type="text" id="codeInput" placeholder="Add new code" />
+        <button id="addCode">Add</button>
+      </span>
+      <div class="toggle-container">
+        <label for="autoJoinToggle">Auto join</label>
+        <label class="auto-join-toggle">
+          <input type="checkbox" id="autoJoinToggle" checked />
+        </label>
+      </div>
+      <ul id="codeList"></ul>
+    </section>
   </body>
 </html>

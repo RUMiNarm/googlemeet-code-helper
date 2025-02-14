@@ -1,5 +1,5 @@
 (function () {
-  function createCodePanel(codes) {
+  function createCodePanel(codes, autoJoin) {
     // Meetのコード入力欄を探す
     const inputField = document.querySelector("input[jsname='YPqjbf']");
     if (!inputField) return;
@@ -20,7 +20,7 @@
     panel.style.width = '100%';
     panel.style.marginTop = '10px';
     panel.style.padding = '8px';
-    panel.style.background = '#F8F9FA'; // Meetの背景色と統一
+    panel.style.background = '#F8F9FA';
     panel.style.borderRadius = '8px';
     panel.style.display = 'flex';
     panel.style.flexWrap = 'wrap';
@@ -29,7 +29,7 @@
     panel.style.gap = '8px';
 
     // コードリスト表示
-    codes.forEach((code, index) => {
+    codes.forEach((code) => {
       const btn = document.createElement('button');
       btn.textContent = code;
       btn.style.padding = '8px 12px';
@@ -50,7 +50,9 @@
 
       // クリックでコードを入力 & 参加ボタンを押す
       btn.onclick = function () {
-        insertCodeAndClickJoin(code);
+        chrome.storage.sync.get('autoJoin', function (data) {
+          insertCodeAndClickJoin(code, data.autoJoin !== false);
+        });
       };
 
       panel.appendChild(btn);
@@ -61,7 +63,7 @@
   }
 
   // Meetのページでコード入力 & 参加ボタンをクリック
-  function insertCodeAndClickJoin(code) {
+  function insertCodeAndClickJoin(code, autoJoin) {
     const input = document.querySelector("input[jsname='YPqjbf']");
     if (input) {
       input.value = code;
@@ -70,17 +72,18 @@
       const inputEvent = new Event('input', { bubbles: true, cancelable: true });
       input.dispatchEvent(inputEvent);
 
-      // 500ms 待って参加ボタンをクリック
-      setTimeout(() => {
-        // 参加ボタンを正しく取得する
-        const joinButton = document.querySelector("button[jsname='r9ERUc'], button[data-idom-class*='Nggy9b']");
-
-        if (joinButton) {
-          joinButton.click();
-        } else {
-          console.warn('参加ボタンが見つかりません。');
-        }
-      }, 500);
+      // 自動参加が有効であれば
+      if (autoJoin) {
+        // 500ms 待って参加ボタンをクリック
+        setTimeout(() => {
+          const joinButton = document.querySelector("button[jsname='r9ERUc'], button[data-idom-class*='Nggy9b']");
+          if (joinButton) {
+            joinButton.click();
+          } else {
+            console.warn('参加ボタンが見つかりません。');
+          }
+        }, 500);
+      }
     } else {
       console.warn('Meetの入力欄が見つかりません。');
     }
