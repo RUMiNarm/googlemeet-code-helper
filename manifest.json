@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Google Meet Code Helper",
+  "version": "1.0",
+  "description": "Google Meetのコード入力を簡単にする拡張機能",
+  "permissions": ["storage"],
+  "host_permissions": ["https://meet.google.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
