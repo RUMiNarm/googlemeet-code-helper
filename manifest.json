@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Google Meet Code Helper",
+  "name": "GoogleMeetCode Auto Input",
   "version": "1.0",
   "description": "Google Meetのコード入力を簡単にする拡張機能",
   "permissions": ["storage"],
